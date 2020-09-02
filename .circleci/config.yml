@@ -1,4 +1,4 @@
-version: 2
+version: 2.1
 jobs:
   install:
     docker:
@@ -67,11 +67,12 @@ jobs:
 
 # Configure the workflows to only run the deployment on master
 workflows:
-  version: 2
+  version: 2.1
   install-deploy:
     jobs:
       - install
       - deploy:
+          context: AWS_API_KEYS
           requires:
             - install
           filters:
